@@ -10,6 +10,15 @@
 -  We could introduce an additional class, `JobOfferManager`, to serve as an intermediary between `User` and `JobOffer`. This class would be responsible for facilitating the entry and editing of both current job positions and job offers.
 
 ### Design 2
+![](images/shong422-design.png)
+## Pros
+- This design meets all the criteria outlined for Assignment 5.
+- The design has all the necessary classes that interacts with each other to meet the requirements.
+- The design is concise and does not unnecessary classes that would have made the UML Class Diagram more complex than it should be.
+
+## Cons
+- The association classes JobOffer and CurrentJob could have been a boolean in the JobDetail class instead.
+- The 'Location' could have been implemented to effectively retrieve the cost of living information.
 
 ### Design 3
 
