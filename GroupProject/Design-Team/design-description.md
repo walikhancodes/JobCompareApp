@@ -1,0 +1,32 @@
+Design Description
+
+1. Main Menu Presentation:
+   - The main menu is presented to the user upon starting the application. This is facilitated by the `displayMainMenu()` method in the `JobOfferManager` class.
+
+2. Entering/Editing Current Job Details:
+   - To enter or edit current job details, the user interacts with the `enterOrEditCurrentJobDetails()` method in the `JobOfferManager` class. This method allows the user to input or modify various attributes of their current job such as title, company, location, salary, bonus, etc. The user has the option to save the job details or cancel the operation.
+
+3. Entering Job Offers:
+   - The user can enter job offers using the `enterJobOffers()` method in the `JobOfferManager` class. Similar to entering current job details, this method allows the user to input all the details of the job offer, including the same attributes as the current job. The user can save the job offer details, cancel the operation, enter another offer, return to the main menu, or compare the offer.
+
+4. Adjusting Comparison Settings:
+   - The comparison settings can be adjusted using the `adjustComparisonSettings()` method in the `JobOfferManager` class. This allows the user to assign integer weights to different factors such as yearly salary, bonus, stock options, etc. If no weights are assigned, all factors are considered equal.
+
+5. Comparing Job Offers:
+   - Job offers can be compared using the `compareJobOffers()` method in the `JobOfferManager` class. This method presents a list of job offers to the user, ranked from best to worst based on a computed score. The user can select two jobs to compare, triggering the comparison process. The comparison is based on various factors such as salary, bonus, stock options, etc., with weights assigned according to the comparison settings.
+
+6. Entry Point and Integration:
+   - The `Main` class serves as the entry point to the system, tying together the various pieces of the application. It contains the `main` method responsible for starting the application.
+
+7. User Interface Responsiveness:
+   - The user interface responsiveness is not explicitly represented in the UML design, as it will be handled within the GUI implementation. However, the design ensures that the necessary methods are provided to support the required user interactions, facilitating an intuitive and responsive user interface.
+
+8. Location Relationship:
+   - Location is connected to JobOffer with a "has" relationship, indicating that each JobOffer has one Location. This relationship is represented in the UML diagram with a `-->` connection from JobOffer to Location.
+
+9. User Class:
+   - The `User` class represents a user of the application and stores information about the user such as first name, last name, email, phone number, and location. This information is used to personalize the user experience and to associate job offers and comparison settings with specific users. The `User` class has getters and setters for all attributes to allow manipulation of user data.
+
+10. Additional Assumptions:
+   - It's assumed that there will be a GUI implementation that interacts with the backend system represented by this UML design. The GUI will handle user interactions and display information based on the operations provided by the `JobOfferManager` class and its collaborators.
+   - The design focuses on the core functionalities required to fulfill the provided requirements. Additional features or refinements may be necessary for a complete and robust implementation, but are not explicitly included in this design for simplicity.
