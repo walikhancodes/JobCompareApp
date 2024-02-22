@@ -12,25 +12,25 @@ With the app, users can make decisions when evaluating different job offers.
 - **Requirements Gathering**
 - This activity involves analyzing the requirements for the app. The team will conduct interviews, brainstorm, ask questions and research to understand the needs and requirements.
 - Initial project information, stakeholder inputs.
-- Completed requirements and documented use cases.
+- Completed requirements and documented use cases.<br><br>
 
 
 - **Designing**
 - The team will create UML Class diagram and other design documents like UseCaseModel, Architectural, Component, Deployment, Class Diagram, and other diagrams based on the requirements. Iterative design sessions will be conducted to refine the team's overall design.
 - Completed requirements and documented use cases.
-- Design templates including Architectural Design, Component Diagram, Deployment Diagram, Low-Level Design, Class Diagram, User Interface Design all approved by team members/stakeholders.
+- Design templates including Architectural Design, Component Diagram, Deployment Diagram, Low-Level Design, Class Diagram, User Interface Design all approved by team members/stakeholders.<br><br>
 
 
 - **Building/Development/Construction**
 - The team will develop and implement the features outlined in our design phase. 
 - Approved designs and prototypes.
-- Functional prototype that meets the requirements with features implemented and passed unit tests.
+- Functional prototype that meets the requirements with features implemented and passed unit tests.<br><br>
 
 
 - **Testing - QA/UAT**
 - The team will perform unit testing, regression testing, user acceptance testing to ensure quality and reliability of the app.
 - Completed development and functional app.
-- reliable/functional app, passed QA, and UAT approval.
+- reliable/functional app, passed QA, and UAT approval.<br><br>
 
 
 - **Deployment and Monitoring**
