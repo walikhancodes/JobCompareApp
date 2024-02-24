@@ -45,5 +45,12 @@
 *<u>Optionally</u>, you can decide to describe some dynamic aspects of your system using one or more behavioral diagrams, such as sequence and state diagrams.*
 
 ## 4 User Interface Design
-*For GUI-based systems, this section should provide the specific format/layout of the user interface of the system (e.g., in the form of graphical mockups).*
+![](images/mainmenu.png)
+![](images/enterjob.png)
+![](images/enteroffer.png)
+![](images/offersaved.png)
+![](images/adjustsetting.png)
+![](images/comparelist.png)
+![](images/comparison.png)
+
 
