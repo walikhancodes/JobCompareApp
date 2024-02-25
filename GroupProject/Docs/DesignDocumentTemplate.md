@@ -19,10 +19,25 @@
 
 ### 2.1 Component Diagram
 
-- Component Diagram is the same as our UML diagram. Please refer to Section 3.1 
+![](images/component-diagram.png)
+- JobOffer: Represents a job offer entity with various attributes such as title, company, location, etc.
+- ComparisonSettings: Stores comparison settings used to evaluate job offers based on different criteria.
+- JobOfferComparator: Compares two job offers based on specified comparison settings to determine which offer is more favorable.
+- JobOfferManager: Manages job offers within the system, providing functionalities like entering details, adjusting settings, and comparing offers.
+- Main: Main class responsible for initiating the application and controlling the overall flow.
+- User: Represents a user entity with personal information such as name, email, and phone number.
+- Location: Represents a geographical location associated with a job offer.
+
 ### 2.2 Deployment Diagram
 
 ![](images/deployment-diagram.png)
+
+The deployment process outlined in the diagram is straightforward and intuitive:
+
+- Continuous Integration (CI): The application undergoes continuous integration on the development server, where changes made by developers are integrated and tested.
+- Testing: After successful integration, the application is deployed to the testing server for further testing and quality assurance processes.
+- Production Deployment: Once the application passes testing, it is deployed to the production server, making it accessible to users.
+- User Access: Users can then access the deployed application on their devices, such as PCs, laptops, or smartphones, for utilization.
 
 
 ## 3 Low-Level Design
