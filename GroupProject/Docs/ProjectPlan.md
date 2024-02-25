@@ -45,9 +45,9 @@ With the app, users can make decisions when evaluating different job offers.
 - Developer - responsible for coding and implementing features
 - Quality Assurance - responsible for testing and ensuring quality of the app
 - UI/UX Designer - responsible for user interface and experience design
-- | Team Member  | Roles                    |
-  |--------------|--------------------------|
-  | Seung Hong   | Project Manager/Developer|
-  | Wali Khan    | UAT Approver/Developer   |
-  | Kevin Hom    | UI/UX/Developer          |
-  | Jiakang Chen | QA/Developer             |
+- | Team Member  | Roles                     |
+  |--------------|---------------------------|
+  | Seung Hong   | Developer                 |
+  | Wali Khan    | Project Manager/Developer |
+  | Kevin Hom    | UI/UX/Developer           |
+  | Jiakang Chen | QA/Developer              |
