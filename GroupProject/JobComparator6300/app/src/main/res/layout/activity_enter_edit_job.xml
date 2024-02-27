@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EnterEditJobActivity">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_height="wrap_content"
+            android:minHeight="?actionBarSize"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/editTextText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter/Edit Current Job"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Title"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/companyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Company"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/locationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Location (entered as city and state)"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/costEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Cost of living in the location (index)"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/salaryEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Yearly Salary"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/bonusEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Yearly Bonus"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/stockEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Number of Stocks"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/fundEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Home Buying Program Fund"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/holidayEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Personal Choice Holidays"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/stipendEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Monthly Internet Stipend"
+            android:inputType="text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="saveJob"
+                android:text="Save" />
+
+            <Button
+                android:id="@+id/cancelEnterBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="returnToMain"
+                android:text="Cancel" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
