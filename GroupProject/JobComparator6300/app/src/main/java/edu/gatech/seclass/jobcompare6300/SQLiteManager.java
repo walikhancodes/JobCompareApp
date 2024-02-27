@@ -89,8 +89,6 @@ public class SQLiteManager extends SQLiteOpenHelper {
                 .append(" INT, ")
                 .append(STIPEND_FIELD)
                 .append(" DOUBLE, ")
-                .append(JOBSCORE_FIELD)
-                .append(" DOUBLE, ")
                 .append(ISCURRENT_FIELD)
                 .append(" BOOLEAN); ");
 
@@ -165,8 +163,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     float stipend = result.getFloat(11);
                     int isCurrentInt = result.getInt(12);
                     boolean isCurrent = (isCurrentInt == 1);
-                    Job job = new Job(id, title, company, location, cost, salary,
-                            bonus, stock, fund, holiday, stipend, isCurrent);
+                    Job job = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent);
                     Job.jobArrayList.add(job);
             }
             }
@@ -220,14 +217,6 @@ public class SQLiteManager extends SQLiteOpenHelper {
         contentValues.put(SETTING_STIPEND_FIELD, setting.getStipend());
 
         sqLiteDatabase.update(SETTING_TABLE_NAME, contentValues, SETTING_ID_FIELD + " =? ", new String[]{String.valueOf(setting.getId())});
-    }
-
-    public boolean checkUserSetting() {
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Setting setting = null;
-        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + SETTING_TABLE_NAME, null)) {
-            return result.getCount() != 0;
-        }
     }
 
     public Setting getUserSetting() {
