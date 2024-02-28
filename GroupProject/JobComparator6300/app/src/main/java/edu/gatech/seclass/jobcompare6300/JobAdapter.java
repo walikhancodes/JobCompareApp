@@ -30,7 +30,6 @@ public class JobAdapter extends ArrayAdapter<Job> {
         TextView company = convertView.findViewById(R.id.cellCompany);
 
         title.setText(job.getTitle());
-        System.out.println(job.getTitle() + "hello!");
         company.setText(job.getCompany());
 
 

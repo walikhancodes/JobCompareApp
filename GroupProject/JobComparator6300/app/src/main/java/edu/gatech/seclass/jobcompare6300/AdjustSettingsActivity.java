@@ -10,8 +10,6 @@ import android.widget.EditText;
 public class AdjustSettingsActivity extends AppCompatActivity {
 
     private EditText salarySettingEditText, bonusSettingEditText, stockSettingEditText, fundSettingEditText, holidaySettingEditText, stipendSettingEditText;
-    private Setting currentSetting;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
