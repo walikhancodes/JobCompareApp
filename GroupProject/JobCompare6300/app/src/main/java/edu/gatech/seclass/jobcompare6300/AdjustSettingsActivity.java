@@ -48,9 +48,7 @@ public class AdjustSettingsActivity extends AppCompatActivity {
 
     }
 
-
     public void returnToMain(View view) {
-        System.out.println(R.id.cancelAdjBtn);
         if (R.id.cancelAdjBtn == view.getId()) {
             Intent i = new Intent(AdjustSettingsActivity.this, MainActivity.class);
             finish();
