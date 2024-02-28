@@ -51,7 +51,6 @@ public class EnterOfferActivity extends AppCompatActivity {
     }
 
     public void returnToMain(View view) {
-        System.out.println(R.id.cancelEnterBtn);
         if (R.id.cancelEnterBtn == view.getId()) {
             startActivity(new Intent(EnterOfferActivity.this, MainActivity.class));
         }
@@ -77,7 +76,6 @@ public class EnterOfferActivity extends AppCompatActivity {
         boolean error = false;
 
         for (EditText field : editFields) {
-            System.out.println(field.getText().toString());
             if (field.getText().toString().length() == 0) {
                 field.setError("Cannot be empty");
                 error = true;
