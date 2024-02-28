@@ -25,7 +25,7 @@ public class Job {
         this.holidays = holidays;
         this.stipend = stipend;
         this.isCurrent = isCurrent;
-
+        this.jobScore = jobScore;
     }
 
     public static ArrayList<Job> getJobArrayList() {
@@ -38,18 +38,13 @@ public class Job {
 
     public static Job getCurrentJob() {
         for (Job job : jobArrayList) {
+            System.out.println(job.salary);
             if (job.isCurrent) {
                 return job;
             }
         }
         return null;
     }
-
-//    public static void calculateJobScore() {
-//        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
-//        Setting currentSetting = sqLiteManager.getUserSetting();
-//
-//    }
 
     public int getId() {
         return id;
@@ -145,5 +140,9 @@ public class Job {
 
     public void setCurrent(boolean current) {
         isCurrent = current;
+    }
+
+    public double getScore() {
+        return jobScore;
     }
 }

@@ -13,7 +13,13 @@ public class EnterEditJobActivity extends AppCompatActivity {
 
     private Job currentJob;
 
-    private static Intent previousIntent;
+    private static int passedSal;
+    private static int passedBon;
+    private static int passedStock;
+    private static int passedFund;
+    private static int passedHoliday;
+    private static int passedStipend;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +44,7 @@ public class EnterEditJobActivity extends AppCompatActivity {
 
     private void checkForCurrentJob() {
         currentJob = Job.getCurrentJob();
+        System.out.println(currentJob + " currrrent");
 
         if (currentJob != null) {
             titleEditText.setText(currentJob.getTitle());
@@ -54,7 +61,15 @@ public class EnterEditJobActivity extends AppCompatActivity {
     }
 
     private void checkForCurrentSetting() {
-        previousIntent = getIntent();
+
+        Intent previousIntent = getIntent();
+
+        passedSal = previousIntent.getIntExtra(Setting.SAL_EXTRA, -1);
+        passedBon = previousIntent.getIntExtra(Setting.BON_EXTRA, -1);
+        passedStock = previousIntent.getIntExtra(Setting.STO_EXTRA, -1);
+        passedFund = previousIntent.getIntExtra(Setting.FUN_EXTRA, -1);
+        passedHoliday = previousIntent.getIntExtra(Setting.HOL_EXTRA, -1);
+        passedStipend = previousIntent.getIntExtra(Setting.STIP_EXTRA, -1);
     }
 
     public void returnToMain(View view) {
@@ -65,40 +80,67 @@ public class EnterEditJobActivity extends AppCompatActivity {
 
     }
 
+    private static double calculateJobScore(double salary, double bonus, int stock, double fund, int holiday, double stipend) {
+
+        int commonD = passedSal + passedBon + passedStock + passedFund + passedHoliday + passedStipend;
+
+        double AYS = salary * ((double) passedSal / commonD);
+        double AYB = bonus * ((double) passedBon / commonD);
+        double STO = ((double) stock /3) * ((double) passedStock / commonD);
+        double FUN = fund * ((double) passedFund / commonD);
+        double HOL = (holiday * (salary / 260)) * ((double) passedHoliday / commonD);
+        double STIP = (stipend * 12) * ((double) passedStipend / commonD);
+
+        return AYS + AYB + STO + FUN + HOL + STIP;
+    }
+
 
     public void saveJob(View view) {
-        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
-        String title = titleEditText.getText().toString();
-        String company = companyEditText.getText().toString();
-        String location = locationEditText.getText().toString();
-        int cost = Integer.parseInt(costEditText.getText().toString());
-        double salary = Double.parseDouble(salaryEditText.getText().toString());
-        double bonus = Double.parseDouble(bonusEditText.getText().toString());
-        int stock = Integer.parseInt(stockEditText.getText().toString());
-        double fund = Float.parseFloat(fundEditText.getText().toString());
-        int holiday = Integer.parseInt(holidayEditText.getText().toString());
-        double stipend = Float.parseFloat(stipendEditText.getText().toString());
-        boolean isCurrent = true;
+        EditText[] editFields = {titleEditText, companyEditText, locationEditText, costEditText, salaryEditText, bonusEditText, stockEditText, fundEditText, holidayEditText, stipendEditText};
+        boolean error = false;
 
-        if (currentJob == null) {
-            int id = Job.jobArrayList.size();
-            Job newJob = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent);
-            Job.jobArrayList.add(newJob);
-            sqLiteManager.addJobToDatabase(newJob);
-        } else {
-            currentJob.setTitle(title);
-            currentJob.setCompany(company);
-            currentJob.setLocation(location);
-            currentJob.setCost(cost);
-            currentJob.setSalary(salary);
-            currentJob.setBonus(bonus);
-            currentJob.setStock(stock);
-            currentJob.setFund(fund);
-            currentJob.setHolidays(holiday);
-            currentJob.setStipend(stipend);
-            sqLiteManager.updateCurrentJob(currentJob);
+        for (EditText field : editFields) {
+            System.out.println(field.getText().toString());
+            if (field.getText().toString().length() == 0) {
+                field.setError("Cannot be empty");
+                error = true;
+            }
         }
-        finish();
+
+        if (!error) {
+            SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
+            String title = titleEditText.getText().toString();
+            String company = companyEditText.getText().toString();
+            String location = locationEditText.getText().toString();
+            int cost = Integer.parseInt(costEditText.getText().toString());
+            double salary = Double.parseDouble(salaryEditText.getText().toString());
+            double bonus = Double.parseDouble(bonusEditText.getText().toString());
+            int stock = Integer.parseInt(stockEditText.getText().toString());
+            double fund = Float.parseFloat(fundEditText.getText().toString());
+            int holiday = Integer.parseInt(holidayEditText.getText().toString());
+            double stipend = Float.parseFloat(stipendEditText.getText().toString());
+            boolean isCurrent = true;
+
+            if (currentJob == null) {
+                int id = Job.jobArrayList.size();
+                Job newJob = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent);
+                Job.jobArrayList.add(newJob);
+                sqLiteManager.addJobToDatabase(newJob);
+            } else {
+                currentJob.setTitle(title);
+                currentJob.setCompany(company);
+                currentJob.setLocation(location);
+                currentJob.setCost(cost);
+                currentJob.setSalary(salary);
+                currentJob.setBonus(bonus);
+                currentJob.setStock(stock);
+                currentJob.setFund(fund);
+                currentJob.setHolidays(holiday);
+                currentJob.setStipend(stipend);
+                sqLiteManager.updateCurrentJob(currentJob);
+            }
+            finish();
+        }
 
     }
 
