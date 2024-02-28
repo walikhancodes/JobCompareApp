@@ -41,7 +41,7 @@ public class JobDetailAdapter extends ArrayAdapter<Job> {
         company.setText(job.getCompany());
         location.setText(job.getLocation());
         salary.setText(String.valueOf(job.getSalary()));
-        bonus.setText(String.valueOf(job.getStock()));
+        bonus.setText(String.valueOf(job.getBonus()));
         stock.setText(String.valueOf(job.getStock()));
         fund.setText(String.valueOf(job.getFund()));
         holiday.setText(String.valueOf(job.getHolidays()));
