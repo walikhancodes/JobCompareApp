@@ -58,19 +58,59 @@ public class AdjustSettingsActivity extends AppCompatActivity {
 
     public void saveSetting(View view) {
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
-        int salarySetting = Integer.parseInt(salarySettingEditText.getText().toString());
-        int bonusSetting = Integer.parseInt(bonusSettingEditText.getText().toString());
-        int stockSetting = Integer.parseInt(stockSettingEditText.getText().toString());
-        int fundSetting = Integer.parseInt(fundSettingEditText.getText().toString());
-        int holidaySetting = Integer.parseInt(holidaySettingEditText.getText().toString());
-        int stipendSetting = Integer.parseInt(stipendSettingEditText.getText().toString());
+        EditText[] editFields = {
+                salarySettingEditText,
+                bonusSettingEditText,
+                stockSettingEditText,
+                fundSettingEditText,
+                holidaySettingEditText,
+                stipendSettingEditText
+        };
 
-        Setting newSetting = new Setting(salarySetting, bonusSetting, stockSetting, fundSetting, holidaySetting, stipendSetting);
+        int[] settings = new int[editFields.length];
+        boolean error = false;
 
-        sqLiteManager.saveUserSettings(newSetting);
-        Intent i = new Intent(AdjustSettingsActivity.this, MainActivity.class);
-        finish();
-        startActivity(i);
+        for (int i = 0; i < editFields.length; i++) {
+            String text = editFields[i].getText().toString();
+            if (text.isEmpty()) {
+                editFields[i].setError("This field cannot be empty.");
+                error = true;
+            } else {
+                try {
+                    settings[i] = Integer.parseInt(text);
+                    if (!isInteger(text)) {
+                        editFields[i].setError("Invalid Entry. Please enter an integer.");
+                        error = true;
+                    }
+                } catch (NumberFormatException e) {
+                    editFields[i].setError("Invalid Entry. Please enter an integer.");
+                    error = true;
+                }
+            }
+        }
 
+        if (!error) {
+            Setting newSetting = new Setting(
+                    settings[0], // salarySetting
+                    settings[1], // bonusSetting
+                    settings[2], // stockSetting
+                    settings[3], // fundSetting
+                    settings[4], // holidaySetting
+                    settings[5]  // stipendSetting
+            );
+            sqLiteManager.saveUserSettings(newSetting);
+            Intent i = new Intent(AdjustSettingsActivity.this, MainActivity.class);
+            finish();
+            startActivity(i);
+        }
+    }
+
+    private boolean isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

@@ -3,21 +3,34 @@
   <component name="deploymentTargetDropDown">
     <value>
       <entry key="App">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\chenj\.android\avd\Medium_Phone_API_34_2.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-01T05:39:11.127021600Z" />
+        </State>
       </entry>
       <entry key="ExampleUnitTest">
         <State />
       </entry>
-      <entry key="costCurrentOffer1()">
+      <entry key="salarySettingError1()">
         <State />
       </entry>
-      <entry key="screenshot2()">
+      <entry key="screenshotSettingCompare1()">
         <State />
       </entry>
-      <entry key="screenshotCurrentJob1()">
+      <entry key="screenshotSettingCompare2()">
         <State />
       </entry>
-      <entry key="screenshotJobOffer1()">
+      <entry key="screenshotSettingCompare4()">
         <State />
       </entry>
     </value>
