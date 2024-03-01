@@ -22,7 +22,7 @@
                 android:id="@+id/editTextText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Compare Jobs"
+                android:text="COMPARE"
                 android:textSize="30sp"
                 android:layout_gravity="center"
                 />
@@ -35,14 +35,14 @@
                 android:text="Back"
                 android:textSize="12sp" />
 
-            <Button
-                android:id="@+id/compareBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="compareJobs"
-                android:text="Compare"
-                android:textSize="12sp"
-                android:layout_gravity="end"/>
+<!--            <Button-->
+<!--                android:id="@+id/compareBtn"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:onClick="/"-->
+<!--                android:text="Compare"-->
+<!--                android:textSize="12sp"-->
+<!--                android:layout_gravity="end"/>-->
 
         </androidx.appcompat.widget.Toolbar>
 

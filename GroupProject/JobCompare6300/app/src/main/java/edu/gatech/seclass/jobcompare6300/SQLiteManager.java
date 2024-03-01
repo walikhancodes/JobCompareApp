@@ -190,21 +190,6 @@ public class SQLiteManager extends SQLiteOpenHelper {
 
     }
 
-    public void addUserSetting(Setting setting) {
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(SETTING_ID_FIELD, setting.getId());
-        contentValues.put(SETTING_SALARY_FIELD, setting.getSalary());
-        contentValues.put(SETTING_BONUS_FIELD, setting.getBonus());
-        contentValues.put(SETTING_STOCK_FIELD, setting.getStock());
-        contentValues.put(SETTING_FUND_FIELD, setting.getFund());
-        contentValues.put(SETTING_HOLIDAY_FIELD, setting.getHoliday());
-        contentValues.put(SETTING_STIPEND_FIELD, setting.getStipend());
-
-        sqLiteDatabase.insert(SETTING_TABLE_NAME, null, contentValues);
-    }
-
     public void saveUserSettings(Setting setting) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 

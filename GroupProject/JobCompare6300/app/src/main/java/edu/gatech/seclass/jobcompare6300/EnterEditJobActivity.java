@@ -44,7 +44,6 @@ public class EnterEditJobActivity extends AppCompatActivity {
 
     private void checkForCurrentJob() {
         currentJob = Job.getCurrentJob();
-        System.out.println(currentJob + " currrrent");
 
         if (currentJob != null) {
             titleEditText.setText(currentJob.getTitle());
@@ -73,34 +72,17 @@ public class EnterEditJobActivity extends AppCompatActivity {
     }
 
     public void returnToMain(View view) {
-        System.out.println(R.id.cancelEnterBtn);
         if (R.id.cancelEnterBtn == view.getId()) {
             startActivity(new Intent(EnterEditJobActivity.this, MainActivity.class));
         }
 
     }
 
-    private static double calculateJobScore(double salary, double bonus, int stock, double fund, int holiday, double stipend) {
-
-        int commonD = passedSal + passedBon + passedStock + passedFund + passedHoliday + passedStipend;
-
-        double AYS = salary * ((double) passedSal / commonD);
-        double AYB = bonus * ((double) passedBon / commonD);
-        double STO = ((double) stock /3) * ((double) passedStock / commonD);
-        double FUN = fund * ((double) passedFund / commonD);
-        double HOL = (holiday * (salary / 260)) * ((double) passedHoliday / commonD);
-        double STIP = (stipend * 12) * ((double) passedStipend / commonD);
-
-        return AYS + AYB + STO + FUN + HOL + STIP;
-    }
-
-
     public void saveJob(View view) {
         EditText[] editFields = {titleEditText, companyEditText, locationEditText, costEditText, salaryEditText, bonusEditText, stockEditText, fundEditText, holidayEditText, stipendEditText};
         boolean error = false;
 
         for (EditText field : editFields) {
-            System.out.println(field.getText().toString());
             if (field.getText().toString().length() == 0) {
                 field.setError("Cannot be empty");
                 error = true;
