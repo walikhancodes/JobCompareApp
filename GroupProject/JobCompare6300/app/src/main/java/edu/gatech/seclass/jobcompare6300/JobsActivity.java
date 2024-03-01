@@ -5,8 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class JobsActivity extends AppCompatActivity {
 
@@ -30,10 +35,36 @@ public class JobsActivity extends AppCompatActivity {
     }
 
     public void returnToMain(View view) {
-        System.out.println(R.id.cancelEnterBtn);
         if (R.id.backBtn == view.getId()) {
             startActivity(new Intent(JobsActivity.this, MainActivity.class));
         }
 
+    }
+
+    public void compareJobs(View view) {
+        if (R.id.compareBtn == view.getId()) {
+
+            int checkedCount = 0;
+            ArrayList<Job> selectedJobs = new ArrayList<>();
+
+            int itemCount = jobListView.getCount();
+
+            for (int i = 0; i < itemCount; i++) {
+                View itemView = jobListView.getChildAt(i);
+                CheckBox checkBox = itemView.findViewById(R.id.checkBox);
+                if (checkBox.isChecked()) {
+                    Job sel = (Job) jobListView.getItemAtPosition(i);
+                    selectedJobs.add(sel);
+                    checkedCount++;
+                }
+            }
+
+            if (checkedCount == 2) {
+                Job.setSelectedJobs(selectedJobs);
+                startActivity(new Intent(JobsActivity.this, ViewJobsActivity.class));
+            } else {
+                Toast.makeText(getApplicationContext(),"Select 2 Jobs",Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
