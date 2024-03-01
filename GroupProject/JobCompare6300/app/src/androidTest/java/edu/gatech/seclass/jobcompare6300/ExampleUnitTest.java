@@ -245,25 +245,6 @@ public class ExampleUnitTest {
     }
 
     // continue later on
-    // edit the current job and cancel
-    @Test
-    public void screenshotOffer4() {
-        onView(withId(R.id.enterEditJobBtn)).perform(click());
-        replaceTextHelper(R.id.titleEditText, "SWE 2");
-        onView(withId(R.id.cancelEnterBtn)).perform(click());
-        onView(withId(R.id.enterEditJobBtn)).perform(click());
-        onView(withId(R.id.titleEditText)).check(matches(withText("SWE")));
-        onView(withId(R.id.companyEditText)).check(matches(withText("comp2")));
-        onView(withId(R.id.locationEditText)).check(matches(withText("LA")));
-        onView(withId(R.id.costEditText)).check(matches(withText("80")));
-        onView(withId(R.id.salaryEditText)).check(matches(withText("20000.0")));
-        onView(withId(R.id.bonusEditText)).check(matches(withText("2000.0")));
-        onView(withId(R.id.stockEditText)).check(matches(withText("2000")));
-        onView(withId(R.id.fundEditText)).check(matches(withText("5.0")));
-        onView(withId(R.id.holidayEditText)).check(matches(withText("0")));
-        onView(withId(R.id.stipendEditText)).check(matches(withText("0.0")));
-        onView(withId(R.id.button)).perform(click());
-    }
 
     /* check all fields error when enter/editing current job*/
     @Test
@@ -368,6 +349,130 @@ public class ExampleUnitTest {
         replaceTextHelper(R.id.stipendEditText, "-1");
         onView(withId(R.id.button)).perform(click());
         onView(withId(R.id.stipendEditText)).check(matches(hasErrorText("Out of range. Please enter a value between 0-75.")));
+    }
+
+    /**
+     This section checks the functionality of the comparison setting
+     **/
+
+    // check the default setting of the comparison setting
+    @Test
+    public void screenshotSettingCompare1() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        onView(withId(R.id.salarySettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.bonusSettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.stockSettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.fundSettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.holidaySettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.stipendSettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.cancelAdjBtn)).perform(click());
+    }
+
+    // edit setting and save
+    @Test
+    public void screenshotSettingCompare2() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.salarySettingEditText, "2");
+        replaceTextHelper(R.id.bonusSettingEditText, "3");
+        replaceTextHelper(R.id.stockSettingEditText, "4");
+        replaceTextHelper(R.id.fundSettingEditText, "5");
+        replaceTextHelper(R.id.holidaySettingEditText, "6");
+        replaceTextHelper(R.id.stipendSettingEditText, "7");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        onView(withId(R.id.salarySettingEditText)).check(matches(withText("2")));
+        onView(withId(R.id.bonusSettingEditText)).check(matches(withText("3")));
+        onView(withId(R.id.stockSettingEditText)).check(matches(withText("4")));
+        onView(withId(R.id.fundSettingEditText)).check(matches(withText("5")));
+        onView(withId(R.id.holidaySettingEditText)).check(matches(withText("6")));
+        onView(withId(R.id.stipendSettingEditText)).check(matches(withText("7")));
+        onView(withId(R.id.cancelAdjBtn)).perform(click());
+    }
+
+    // edit setting back to the default setting
+    @Test
+    public void screenshotSettingCompare3() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.salarySettingEditText, "1");
+        replaceTextHelper(R.id.bonusSettingEditText, "1");
+        replaceTextHelper(R.id.stockSettingEditText, "1");
+        replaceTextHelper(R.id.fundSettingEditText, "1");
+        replaceTextHelper(R.id.holidaySettingEditText, "1");
+        replaceTextHelper(R.id.stipendSettingEditText, "1");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        onView(withId(R.id.salarySettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.bonusSettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.stockSettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.fundSettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.holidaySettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.stipendSettingEditText)).check(matches(withText("1")));
+        onView(withId(R.id.cancelAdjBtn)).perform(click());
+    }
+
+    // check if any of the fields is null
+    @Test
+    public void screenshotSettingCompare4() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.salarySettingEditText, "");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.salarySettingEditText)).check(matches(hasErrorText("This field cannot be empty.")));
+    }
+
+    @Test
+    public void screenshotSettingCompare5() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.holidaySettingEditText, "");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.holidaySettingEditText)).check(matches(hasErrorText("This field cannot be empty.")));
+    }
+
+    @Test
+    public void salarySettingError1() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.salarySettingEditText, "Test@1");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.salarySettingEditText)).check(matches(hasErrorText("Invalid Entry. Please enter an integer.")));
+    }
+
+    @Test
+    public void bonusSettingError1() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.bonusSettingEditText, "Test@1");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.bonusSettingEditText)).check(matches(hasErrorText("Invalid Entry. Please enter an integer.")));
+    }
+
+    @Test
+    public void stockSettingError1() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.stockSettingEditText, "Test@1");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.stockSettingEditText)).check(matches(hasErrorText("Invalid Entry. Please enter an integer.")));
+    }
+
+    @Test
+    public void fundSettingError1() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.fundSettingEditText, "Test@1");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.fundSettingEditText)).check(matches(hasErrorText("Invalid Entry. Please enter an integer.")));
+    }
+
+    @Test
+    public void holidaySettingError1() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.holidaySettingEditText, "Test@1");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.holidaySettingEditText)).check(matches(hasErrorText("Invalid Entry. Please enter an integer.")));
+    }
+
+    @Test
+    public void stipendSettingError1() {
+        onView(withId(R.id.adjustSettingBtn)).perform(click());
+        replaceTextHelper(R.id.stipendSettingEditText, "Test@1");
+        onView(withId(R.id.button2)).perform(click());
+        onView(withId(R.id.stipendSettingEditText)).check(matches(hasErrorText("Invalid Entry. Please enter an integer.")));
     }
 
 
