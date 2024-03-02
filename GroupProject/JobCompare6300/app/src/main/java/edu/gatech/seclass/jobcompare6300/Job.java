@@ -27,6 +27,7 @@ public class Job {
         this.holidays = holidays;
         this.stipend = stipend;
         this.isCurrent = isCurrent;
+        this.jobScore = jobScore;
     }
 
     public static ArrayList<Job> getJobArrayList() {
