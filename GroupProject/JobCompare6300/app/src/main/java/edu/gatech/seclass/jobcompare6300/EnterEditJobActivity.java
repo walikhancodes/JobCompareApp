@@ -45,6 +45,8 @@ public class EnterEditJobActivity extends AppCompatActivity {
     private void checkForCurrentJob() {
         currentJob = Job.getCurrentJob();
 
+        System.out.println(currentJob + " current");
+
         if (currentJob != null) {
             titleEditText.setText(currentJob.getTitle());
             companyEditText.setText(currentJob.getCompany());
@@ -76,6 +78,19 @@ public class EnterEditJobActivity extends AppCompatActivity {
             startActivity(new Intent(EnterEditJobActivity.this, MainActivity.class));
         }
 
+    }
+    private static double calculateJobScore(double salary, double bonus, int stock, double fund, int holiday, double stipend) {
+
+        int commonD = passedSal + passedBon + passedStock + passedFund + passedHoliday + passedStipend;
+
+        double AYS = salary * ((double) passedSal / commonD);
+        double AYB = bonus * ((double) passedBon / commonD);
+        double STO = ((double) stock /3) * ((double) passedStock / commonD);
+        double FUN = fund * ((double) passedFund / commonD);
+        double HOL = (holiday * (salary / 260)) * ((double) passedHoliday / commonD);
+        double STIP = (stipend * 12) * ((double) passedStipend / commonD);
+
+        return AYS + AYB + STO + FUN + HOL + STIP;
     }
 
     public void saveJob(View view) {
@@ -152,11 +167,13 @@ public class EnterEditJobActivity extends AppCompatActivity {
             double fund = Float.parseFloat(fundEditText.getText().toString());
             int holiday = Integer.parseInt(holidayEditText.getText().toString());
             double stipend = Float.parseFloat(stipendEditText.getText().toString());
+            double jobScore = calculateJobScore(salary, bonus, stock, fund, holiday, stipend);
+            System.out.println("Job Score is " + jobScore);
             boolean isCurrent = true;
 
             if (currentJob == null) {
                 int id = Job.jobArrayList.size();
-                Job newJob = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent);
+                Job newJob = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent, jobScore);
                 Job.jobArrayList.add(newJob);
                 sqLiteManager.addJobToDatabase(newJob);
             } else {
@@ -170,6 +187,7 @@ public class EnterEditJobActivity extends AppCompatActivity {
                 currentJob.setFund(fund);
                 currentJob.setHolidays(holiday);
                 currentJob.setStipend(stipend);
+                currentJob.setScore(jobScore);
                 sqLiteManager.updateCurrentJob(currentJob);
             }
             finish();
