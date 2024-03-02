@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Job {
     public static ArrayList<Job> jobArrayList = new ArrayList<>();
+
+    public static ArrayList<Job> selectedJobs = new ArrayList<>();
     private int id;
     private String title, company, location;
     private int cost, stock, holidays;
@@ -25,7 +27,6 @@ public class Job {
         this.holidays = holidays;
         this.stipend = stipend;
         this.isCurrent = isCurrent;
-        this.jobScore = jobScore;
     }
 
     public static ArrayList<Job> getJobArrayList() {
@@ -34,6 +35,10 @@ public class Job {
 
     public static void setJobArrayList(ArrayList<Job> jobArrayList) {
         Job.jobArrayList = jobArrayList;
+    }
+
+    public static void setSelectedJobs(ArrayList<Job> selectedJobs) {
+        Job.selectedJobs = selectedJobs;
     }
 
     public static Job getCurrentJob() {

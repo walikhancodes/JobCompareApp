@@ -44,7 +44,6 @@ public class EnterEditJobActivity extends AppCompatActivity {
 
     private void checkForCurrentJob() {
         currentJob = Job.getCurrentJob();
-        System.out.println(currentJob + " currrrent");
 
         if (currentJob != null) {
             titleEditText.setText(currentJob.getTitle());
@@ -73,38 +72,72 @@ public class EnterEditJobActivity extends AppCompatActivity {
     }
 
     public void returnToMain(View view) {
-        System.out.println(R.id.cancelEnterBtn);
         if (R.id.cancelEnterBtn == view.getId()) {
             startActivity(new Intent(EnterEditJobActivity.this, MainActivity.class));
         }
 
     }
 
-    private static double calculateJobScore(double salary, double bonus, int stock, double fund, int holiday, double stipend) {
-
-        int commonD = passedSal + passedBon + passedStock + passedFund + passedHoliday + passedStipend;
-
-        double AYS = salary * ((double) passedSal / commonD);
-        double AYB = bonus * ((double) passedBon / commonD);
-        double STO = ((double) stock /3) * ((double) passedStock / commonD);
-        double FUN = fund * ((double) passedFund / commonD);
-        double HOL = (holiday * (salary / 260)) * ((double) passedHoliday / commonD);
-        double STIP = (stipend * 12) * ((double) passedStipend / commonD);
-
-        return AYS + AYB + STO + FUN + HOL + STIP;
-    }
-
-
     public void saveJob(View view) {
         EditText[] editFields = {titleEditText, companyEditText, locationEditText, costEditText, salaryEditText, bonusEditText, stockEditText, fundEditText, holidayEditText, stipendEditText};
         boolean error = false;
 
         for (EditText field : editFields) {
-            System.out.println(field.getText().toString());
             if (field.getText().toString().length() == 0) {
                 field.setError("Cannot be empty");
                 error = true;
             }
+        }
+
+        if (!isInteger(costEditText.getText().toString())) {
+            costEditText.setError("Invalid Entry. Please enter an integer.");
+            error = true;
+        }
+        if (!isDouble(salaryEditText.getText().toString())) {
+            salaryEditText.setError("Invalid Entry. Please enter a number.");
+            error = true;
+        }
+        if (!isDouble(bonusEditText.getText().toString())) {
+            bonusEditText.setError("Invalid Entry. Please enter a number.");
+            error = true;
+        }
+        if (!isInteger(stockEditText.getText().toString())) {
+            stockEditText.setError("Invalid Entry. Please enter an integer.");
+            error = true;
+        }
+
+        try {
+            // Validation for fundEditText within 0-15
+            double fundValue = Double.parseDouble(fundEditText.getText().toString());
+            if (fundValue < 0 || fundValue > 15) {
+                fundEditText.setError("Out of range. Please enter a value between 0-15.");
+                error = true;
+            }
+        } catch (NumberFormatException e) {
+            fundEditText.setError("Invalid Entry. Please enter a number.");
+            error = true;
+        }
+        try {
+            // Validation for holidayEditText within 0-20
+            int holidayValue = Integer.parseInt(holidayEditText.getText().toString());
+            if (holidayValue < 0 || holidayValue > 20) {
+                holidayEditText.setError("Out of range. Please enter a value between 0-20.");
+                error = true;
+            }
+        } catch (NumberFormatException e) {
+            holidayEditText.setError("Invalid Entry. Please enter an integer.");
+            error = true;
+        }
+        try {
+            // Validation for stipendEditText within 0-75
+            double stipendValue = Double.parseDouble(stipendEditText.getText().toString());
+            if (stipendValue < 0 || stipendValue > 75) {
+                stipendEditText.setError("Out of range. Please enter a value between 0-75.");
+                error = true;
+            }
+        } catch (NumberFormatException e) {
+            stipendEditText.setError("Invalid Entry. Please enter a number.");
+            error = true;
         }
 
         if (!error) {
@@ -143,5 +176,25 @@ public class EnterEditJobActivity extends AppCompatActivity {
         }
 
     }
+
+    private boolean isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private boolean isDouble(String input) {
+        try {
+            Double.parseDouble(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+
 
 }

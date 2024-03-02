@@ -25,14 +25,11 @@ public class JobAdapter extends ArrayAdapter<Job> {
         if(convertView == null)
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.job_cell, parent, false);
 
-
         TextView title = convertView.findViewById(R.id.cellTitle);
         TextView company = convertView.findViewById(R.id.cellCompany);
 
         title.setText(job.getTitle());
         company.setText(job.getCompany());
-
-
 
         return convertView;
     }
