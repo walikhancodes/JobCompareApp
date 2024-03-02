@@ -90,7 +90,9 @@ public class SQLiteManager extends SQLiteOpenHelper {
                 .append(STIPEND_FIELD)
                 .append(" DOUBLE, ")
                 .append(ISCURRENT_FIELD)
-                .append(" BOOLEAN); ");
+                .append(" BOOLEAN, ")
+                .append(JOBSCORE_FIELD)
+                .append(" DOUBLE); ");
 
         db.execSQL(sql.toString());
 
@@ -122,7 +124,8 @@ public class SQLiteManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + JOB_TABLE_NAME);
+        onCreate(db);
     }
 
     public void addJobToDatabase(Job job) {
@@ -141,6 +144,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
         contentValues.put(HOLIDAY_FIELD, job.getHolidays());
         contentValues.put(STIPEND_FIELD, job.getStipend());
         contentValues.put(ISCURRENT_FIELD, job.isCurrent());
+        contentValues.put(JOBSCORE_FIELD, job.getScore());
         sqLiteDatabase.insert(JOB_TABLE_NAME, null, contentValues);
     }
 
@@ -163,9 +167,10 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     float stipend = result.getFloat(11);
                     int isCurrentInt = result.getInt(12);
                     boolean isCurrent = (isCurrentInt == 1);
-                    Job job = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent);
+                    float jobScore = result.getFloat(13);
+                    Job job = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent, jobScore);
                     Job.jobArrayList.add(job);
-            }
+                }
             }
         }
     }
@@ -185,6 +190,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
         contentValues.put(HOLIDAY_FIELD, job.getHolidays());
         contentValues.put(STIPEND_FIELD, job.getStipend());
         contentValues.put(ISCURRENT_FIELD, job.isCurrent());
+        contentValues.put(JOBSCORE_FIELD, job.getScore());
 
         sqLiteDatabase.update(JOB_TABLE_NAME, contentValues, ID_FIELD + " =? ", new String[]{String.valueOf(job.getId())});
 
