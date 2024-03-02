@@ -12,7 +12,7 @@ public class Job {
     private double jobScore;
 
 
-    public Job(int id, String title, String company, String location, int cost, double salary, double bonus, int stock, double fund, int holidays, double stipend, boolean isCurrent) {
+    public Job(int id, String title, String company, String location, int cost, double salary, double bonus, int stock, double fund, int holidays, double stipend, boolean isCurrent, double jobScore) {
         this.id = id;
         this.title = title;
         this.company = company;
@@ -145,4 +145,6 @@ public class Job {
     public double getScore() {
         return jobScore;
     }
+
+    public void setScore(double score) { this.jobScore = score; }
 }

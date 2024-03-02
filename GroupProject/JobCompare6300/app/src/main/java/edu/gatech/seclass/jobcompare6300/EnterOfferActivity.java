@@ -97,10 +97,13 @@ public class EnterOfferActivity extends AppCompatActivity {
             int holiday = Integer.parseInt(holidayEditText.getText().toString());
             float stipend = Float.parseFloat(stipendEditText.getText().toString());
             boolean isCurrent = false;
+            double jobScore = calculateJobScore(salary, bonus, stock, fund , holiday, stipend);
+            System.out.println("Job Score is " + jobScore);
 
             int id = Job.jobArrayList.size();
 
-            Job newJob = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent);
+
+            Job newJob = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent, jobScore);
             Job.jobArrayList.add(newJob);
             sqLiteManager.addJobToDatabase(newJob);
             finish();

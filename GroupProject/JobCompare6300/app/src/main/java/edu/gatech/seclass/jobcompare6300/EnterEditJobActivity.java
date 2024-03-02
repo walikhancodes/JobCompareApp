@@ -44,7 +44,7 @@ public class EnterEditJobActivity extends AppCompatActivity {
 
     private void checkForCurrentJob() {
         currentJob = Job.getCurrentJob();
-        System.out.println(currentJob + " currrrent");
+        System.out.println(currentJob + " current");
 
         if (currentJob != null) {
             titleEditText.setText(currentJob.getTitle());
@@ -119,11 +119,13 @@ public class EnterEditJobActivity extends AppCompatActivity {
             double fund = Float.parseFloat(fundEditText.getText().toString());
             int holiday = Integer.parseInt(holidayEditText.getText().toString());
             double stipend = Float.parseFloat(stipendEditText.getText().toString());
+            double jobScore = calculateJobScore(salary, bonus, stock, fund, holiday, stipend);
+            System.out.println("Job Score is " + jobScore);
             boolean isCurrent = true;
 
             if (currentJob == null) {
                 int id = Job.jobArrayList.size();
-                Job newJob = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent);
+                Job newJob = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent, jobScore);
                 Job.jobArrayList.add(newJob);
                 sqLiteManager.addJobToDatabase(newJob);
             } else {
@@ -137,6 +139,7 @@ public class EnterEditJobActivity extends AppCompatActivity {
                 currentJob.setFund(fund);
                 currentJob.setHolidays(holiday);
                 currentJob.setStipend(stipend);
+                currentJob.setScore(jobScore);
                 sqLiteManager.updateCurrentJob(currentJob);
             }
             finish();
