@@ -124,7 +124,8 @@ public class SQLiteManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + JOB_TABLE_NAME);
+        onCreate(db);
     }
 
     public void addJobToDatabase(Job job) {
@@ -166,10 +167,10 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     float stipend = result.getFloat(11);
                     int isCurrentInt = result.getInt(12);
                     boolean isCurrent = (isCurrentInt == 1);
-                    double jobScore = result.getDouble(13);
+                    float jobScore = result.getFloat(13);
                     Job job = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent, jobScore);
                     Job.jobArrayList.add(job);
-            }
+                }
             }
         }
     }
