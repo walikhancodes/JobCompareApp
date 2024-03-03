@@ -13,12 +13,12 @@ public class EnterEditJobActivity extends AppCompatActivity {
 
     private Job currentJob;
 
-    private static int passedSal;
-    private static int passedBon;
-    private static int passedStock;
-    private static int passedFund;
-    private static int passedHoliday;
-    private static int passedStipend;
+    static int passedSal;
+    static int passedBon;
+    static int passedStock;
+    static int passedFund;
+    static int passedHoliday;
+    static int passedStipend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class EnterEditJobActivity extends AppCompatActivity {
         }
 
     }
-    private static double calculateJobScore(double salary, double bonus, int stock, double fund, int holiday, double stipend) {
+    static double calculateJobScore(double salary, double bonus, int stock, double fund, int holiday, double stipend) {
 
         int commonD = passedSal + passedBon + passedStock + passedFund + passedHoliday + passedStipend;
 

@@ -58,11 +58,8 @@
 
 ### 1.5 Technology
 - JUnit will be use as our technology for unit testing
-- Selenium will be deployed for integration and system testing phases.
 
 ## 2 Test Cases
-
-*This section should be the core of this document. You should provide a table of test cases, one per row. For each test case, the table should provide its purpose, the steps necessary to perform the test, the expected result, the actual result (to be filled later), pass/fail information (to be filled later), and any additional information you think is relevant.*
 | Purpose              | Steps               | Expected Result     | Actual Result | Pass/Fail | Additional Information |
 |----------------------|---------------------|---------------------|---------------|-----------|------------------------|
 | User could not save without filling all required information when entering current job detail| 1.  Click on enter current job <br> 2. Fill out the title with "SWE" and leave others blank <br> 3. Click on save button | Show error message: Cannot be empty | Show error message: Cannot be empty               | Pass          |   |
@@ -108,17 +105,14 @@
 | User inputs a non-numeric value in the fund setting field | 1.  Click on adjust comparison setting <br> 2. Input "test @!" in the fund field| Show error message: Invalid Entry. Please enter an integer. | Show error message: Invalid Entry. Please enter an integer.             |           |   |
 | User inputs a non-numeric value in the holiday setting field | 1.  Click on adjust comparison setting <br> 2. Input "test @!" in the holiday field| Show error message: Invalid Entry. Please enter an integer. | Show error message: Invalid Entry. Please enter an integer.             |           |   |
 | User inputs a non-numeric value in the stipend setting field | 1.  Click on adjust comparison setting <br> 2. Input "test @!" in the holistipendday field| Show error message: Invalid Entry. Please enter an integer. | Show error message: Invalid Entry. Please enter an integer.             |           |   |
-
-
--- edit later on
-| In the job offer page, user could enter another job offers| 1.  Click enter job offers in the main menu <br> 2. Click enter another job offer button|  User stays in the same page but all info are cleared|               |           |   |
-| In the job offer page, user could return to new menu| 1.  Click enter job offers in the main menu <br> 2. Click return to main menu button|  User return to main menu page|               |           |   |
-| In the job offer page, user could compare offer after saving| 1.  Click enter job offers in the main menu <br> 2. Click save button <br> 3. Click compare job offer button|  User could go to compare job page|               |           |   |
-| In the job offer page, user could not compare offer before saving| 1.  Enter job offers in the main menu <br> 2. Click compare job offer button|  Show error message indicating that current job offer is not saved|               |           |   |
-| User could adjusting comparison setting| 1.  Click adjust comparison setting <br> | User navigates to the comparison setting page |               |           |   |
-| User could compare job offers | 1.  User at least has one job offer <br> 2. Click compare job offers| User could see a list of job offers including the current job if presents |               |           |   |
-| User could not compare job offers if there is no job offers| 1. No job offer <br> 2. Click compare jobs| Show error message indicating that missing job offers |               |           |   |
-| User could trigger comparison if there are more than 2 job offers| 1. Select two job offers <br> 2. Click compare select jobs| User could see the  comparison of two job offers |               |           |   |
+| In the job offer page, user could enter another job offers| 1.  Click on enter job offers in the main menu <br> 2. Fill the salary with 1000 <br> 3. Click on enter another job offer button|  User stays in the same page but all info are cleared|               |           |   |
+| In the job offer page, user could return to new menu| 1.  Click on enter job offers in the main menu <br> 2. Click on return to main menu button|  User return to main menu page|               |           |   |
+| In the job offer page, user could compare offer after saving| 1.  Click enter job offers in the main menu <br> 2. Fill all info <br> 3. Click on save button <br> 4. Click compare job offer button|  User could go to compare job page|               |           |   |
+| In the job offer page, user could not compare offer before saving| 1.  Click enter job offers in the main menu <br> 2. Fill all info <br> 3. Click compare job offer button|  Show error message indicating that current job offer is not saved|               |           |   |
+| User could not compare job offers if he only has one offer/current job| 1. Select the job <br> 2. Click on compare job offers| Error message: select two jobs |               |           |   |
+| User could compare job offers| 1. Select two jobs <br> 2. Click on compare job offers| Show the details of these two jobs |               |           |   |
+| User could compare job offers if he select 3 jobs| 1. Select three jobs <br> 2. Click on compare job offers| Show the details of these two jobs |               |           |   |
+| User could compare job offers if there is no job| 1. Click on compare job offers| Error message: select two jobs |               |           |   |
 | User could perform another comparison| 1. Click another comparison in the comparison page| User navigates back to the job list and could select two job offers |               |           |   |
 | System calcualtes the job score correctly| 1. Print the job scores and compare them with those calculated by hand| The results are the same |               |           |   |
 | System updates the job score correctly when user changes the job details| 1. Change salary to 1 for one job offer <br> 2. Click compare job offers <br> 3. Check job scores| System updates job scores |               |           |   |

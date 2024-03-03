@@ -2,21 +2,20 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="app">
-        <State>
-          <multipleDevicesSelectedInDropDown value="true" />
-          <targetsSelectedWithDialog>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Medium_Phone_API_33.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetsSelectedWithDialog>
-        </State>
+      <entry key="App">
+        <State />
+      </entry>
+      <entry key="ExampleUnitTest">
+        <State />
+      </entry>
+      <entry key="calculateJobScoreTest3()">
+        <State />
+      </entry>
+      <entry key="calculateJobScoreTest4()">
+        <State />
+      </entry>
+      <entry key="jobScoreTest">
+        <State />
       </entry>
     </value>
   </component>
