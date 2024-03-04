@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class JobsActivity extends AppCompatActivity {
 
@@ -30,6 +32,13 @@ public class JobsActivity extends AppCompatActivity {
     }
 
     private void setJobAdapter() {
+        Collections.sort(Job.jobArrayList, new Comparator<Job>() {
+            @Override
+            public int compare(Job job1, Job job2) {
+                return Double.compare(job2.getScore(), job1.getScore());
+            }
+        });
+
         JobAdapter jobAdapter = new JobAdapter(getApplicationContext(), Job.jobArrayList);
         jobListView.setAdapter(jobAdapter);
     }

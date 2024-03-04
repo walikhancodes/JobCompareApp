@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class JobAdapter extends ArrayAdapter<Job> {
@@ -27,9 +28,13 @@ public class JobAdapter extends ArrayAdapter<Job> {
 
         TextView title = convertView.findViewById(R.id.cellTitle);
         TextView company = convertView.findViewById(R.id.cellCompany);
+        TextView score = convertView.findViewById(R.id.cellScore);
 
         title.setText(job.getTitle());
         company.setText(job.getCompany());
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formattedScore = df.format(job.getScore());
+        score.setText(formattedScore);
 
         return convertView;
     }
