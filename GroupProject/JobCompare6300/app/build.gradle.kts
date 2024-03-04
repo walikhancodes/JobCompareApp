@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "edu.gatech.seclass.jobcompare6300"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "edu.gatech.seclass.jobcompare6300"
         minSdk = 33
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
