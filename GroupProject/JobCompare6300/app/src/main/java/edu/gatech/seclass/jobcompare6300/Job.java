@@ -14,7 +14,7 @@ public class Job {
     private double jobScore;
 
 
-    public Job(int id, String title, String company, String location, int cost, double salary, double bonus, int stock, double fund, int holidays, double stipend, boolean isCurrent, double jobScore) {
+    public Job(int id, String title, String company, String location, int cost, double salary, double bonus, int stock, double fund, int holidays, double stipend, boolean isCurrent) {
         this.id = id;
         this.title = title;
         this.company = company;
@@ -27,7 +27,6 @@ public class Job {
         this.holidays = holidays;
         this.stipend = stipend;
         this.isCurrent = isCurrent;
-        this.jobScore = jobScore;
     }
 
     public static ArrayList<Job> getJobArrayList() {
@@ -44,7 +43,6 @@ public class Job {
 
     public static Job getCurrentJob() {
         for (Job job : jobArrayList) {
-            System.out.println(job.salary);
             if (job.isCurrent) {
                 return job;
             }
