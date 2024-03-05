@@ -30,11 +30,11 @@ public class Job {
     public void calculateScore(int userSettingSalary, int userSettingBonus, int userSettingStock, int userSettingFund, int userSettingHoliday, int userSettingStipend) {
         int commonD = userSettingSalary + userSettingBonus + userSettingStock + userSettingFund + userSettingHoliday + userSettingStipend;
 
-        double AYS = salary * ((double) userSettingSalary / commonD);
-        double AYB = bonus * ((double) userSettingBonus / commonD);
+        double AYS = (salary * 100/cost) * ((double) userSettingSalary / commonD);
+        double AYB = (bonus * 100/cost) * ((double) userSettingBonus / commonD);
         double STO = ((double) stock /3) * ((double) userSettingStock / commonD);
         double FUN = fund * ((double) userSettingFund / commonD);
-        double HOL = (holidays * (salary / 260)) * ((double) userSettingHoliday / commonD);
+        double HOL = (holidays * (salary * 100/cost) / 260) * ((double) userSettingHoliday / commonD);
         double STIP = (stipend * 12) * ((double) userSettingStipend / commonD);
 
         this.jobScore = AYS + AYB + STO + FUN + HOL + STIP;
