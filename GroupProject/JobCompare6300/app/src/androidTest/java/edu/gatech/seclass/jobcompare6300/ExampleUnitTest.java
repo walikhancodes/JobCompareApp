@@ -168,9 +168,10 @@ public class ExampleUnitTest {
     @Test
     public void fundCurrentJobError2() {
         onView(withId(R.id.enterEditJobBtn)).perform(click());
-        replaceTextHelper(R.id.fundEditText, "16");
+        replaceTextHelper(R.id.salaryEditText, "10000");
+        replaceTextHelper(R.id.fundEditText, "10000");
         onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.fundEditText)).check(matches(hasErrorText("Out of range. Please enter a value between 0-15.")));
+        onView(withId(R.id.fundEditText)).check(matches(hasErrorText("Out of range. Please enter a value up to 15% of Yearly Salary.")));
     }
 
     @Test
@@ -178,7 +179,7 @@ public class ExampleUnitTest {
         onView(withId(R.id.enterEditJobBtn)).perform(click());
         replaceTextHelper(R.id.fundEditText, "-1");
         onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.fundEditText)).check(matches(hasErrorText("Out of range. Please enter a value between 0-15.")));
+        onView(withId(R.id.fundEditText)).check(matches(hasErrorText("Invalid Entry. Please enter a positive value.")));
     }
 
     @Test
@@ -280,27 +281,28 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void fundOfferError1() {
-        onView(withId(R.id.enterOfferBtn)).perform(click());
+    public void fundJobOfferError1() {
+        onView(withId(R.id.enterEditJobBtn)).perform(click());
         replaceTextHelper(R.id.fundEditText, "Test@1");
         onView(withId(R.id.button)).perform(click());
         onView(withId(R.id.fundEditText)).check(matches(hasErrorText("Invalid Entry. Please enter a number.")));
     }
 
     @Test
-    public void fundOfferError2() {
-        onView(withId(R.id.enterOfferBtn)).perform(click());
-        replaceTextHelper(R.id.fundEditText, "16");
+    public void fundJobOfferError2() {
+        onView(withId(R.id.enterEditJobBtn)).perform(click());
+        replaceTextHelper(R.id.salaryEditText, "10000");
+        replaceTextHelper(R.id.fundEditText, "10000");
         onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.fundEditText)).check(matches(hasErrorText("Out of range. Please enter a value between 0-15.")));
+        onView(withId(R.id.fundEditText)).check(matches(hasErrorText("Out of range. Please enter a value up to 15% of Yearly Salary.")));
     }
 
     @Test
-    public void fundOfferError3() {
-        onView(withId(R.id.enterOfferBtn)).perform(click());
+    public void fundJobOfferError3() {
+        onView(withId(R.id.enterEditJobBtn)).perform(click());
         replaceTextHelper(R.id.fundEditText, "-1");
         onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.fundEditText)).check(matches(hasErrorText("Out of range. Please enter a value between 0-15.")));
+        onView(withId(R.id.fundEditText)).check(matches(hasErrorText("Invalid Entry. Please enter a positive value.")));
     }
 
     @Test

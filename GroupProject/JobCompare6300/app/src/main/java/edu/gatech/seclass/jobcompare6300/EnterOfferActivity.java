@@ -67,16 +67,23 @@ public class EnterOfferActivity extends AppCompatActivity {
         }
 
         try {
-            // Validation for fundEditText within 0-15
+            // Validation for fundEditText within 0-15% of Yearly Salary
             double fundValue = Double.parseDouble(fundEditText.getText().toString());
-            if (fundValue < 0 || fundValue > 15) {
-                fundEditText.setError("Out of range. Please enter a value between 0-15.");
+            double salaryValue = Double.parseDouble(salaryEditText.getText().toString());
+            double allowedFundValue = salaryValue * 0.15;
+
+            if (fundValue < 0) {
+                fundEditText.setError("Invalid Entry. Please enter a positive value.");
+                error = true;
+            } else if (fundValue > allowedFundValue) {
+                fundEditText.setError("Out of range. Please enter a value up to 15% of Yearly Salary.");
                 error = true;
             }
         } catch (NumberFormatException e) {
             fundEditText.setError("Invalid Entry. Please enter a number.");
             error = true;
         }
+
         try {
             // Validation for holidayEditText within 0-20
             int holidayValue = Integer.parseInt(holidayEditText.getText().toString());
