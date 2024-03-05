@@ -167,6 +167,8 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     int isCurrentInt = result.getInt(12);
                     boolean isCurrent = (isCurrentInt == 1);
                     Job job = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent);
+                    Setting userSetting = getUserSetting();
+                    job.calculateScore(userSetting.getSalary(), userSetting.getBonus(), userSetting.getStock(), userSetting.getFund(), userSetting.getHoliday(), userSetting.getStipend());
                     Job.jobArrayList.add(job);
                 }
             }

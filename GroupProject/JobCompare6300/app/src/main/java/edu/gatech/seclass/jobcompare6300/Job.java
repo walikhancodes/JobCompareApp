@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Job {
     public static ArrayList<Job> jobArrayList = new ArrayList<>();
-
     public static ArrayList<Job> selectedJobs = new ArrayList<>();
     private int id;
     private String title, company, location;
@@ -12,7 +11,6 @@ public class Job {
     private double salary, bonus, fund, stipend;
     private boolean isCurrent;
     private double jobScore;
-
 
     public Job(int id, String title, String company, String location, int cost, double salary, double bonus, int stock, double fund, int holidays, double stipend, boolean isCurrent) {
         this.id = id;
@@ -27,6 +25,19 @@ public class Job {
         this.holidays = holidays;
         this.stipend = stipend;
         this.isCurrent = isCurrent;
+    }
+
+    public void calculateScore(int userSettingSalary, int userSettingBonus, int userSettingStock, int userSettingFund, int userSettingHoliday, int userSettingStipend) {
+        int commonD = userSettingSalary + userSettingBonus + userSettingStock + userSettingFund + userSettingHoliday + userSettingStipend;
+
+        double AYS = salary * ((double) userSettingSalary / commonD);
+        double AYB = bonus * ((double) userSettingBonus / commonD);
+        double STO = ((double) stock /3) * ((double) userSettingStock / commonD);
+        double FUN = fund * ((double) userSettingFund / commonD);
+        double HOL = (holidays * (salary / 260)) * ((double) userSettingHoliday / commonD);
+        double STIP = (stipend * 12) * ((double) userSettingStipend / commonD);
+
+        this.jobScore = AYS + AYB + STO + FUN + HOL + STIP;
     }
 
     public static ArrayList<Job> getJobArrayList() {

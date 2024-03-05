@@ -11,18 +11,11 @@ public class EnterOfferActivity extends AppCompatActivity {
 
     private EditText titleEditText, companyEditText, locationEditText, costEditText, salaryEditText, bonusEditText, stockEditText, fundEditText, holidayEditText, stipendEditText;
 
-    private static int passedSal;
-    private static int passedBon;
-    private static int passedStock;
-    private static int passedFund;
-    private static int passedHoliday;
-    private static int passedStipend;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_offer);
         initWidgets();
-        checkForCurrentSetting();
     }
 
     private void initWidgets() {
@@ -38,37 +31,11 @@ public class EnterOfferActivity extends AppCompatActivity {
         stipendEditText = findViewById(R.id.stipendEditText);
     }
 
-    private void checkForCurrentSetting() {
-
-        Intent previousIntent = getIntent();
-
-        passedSal = previousIntent.getIntExtra(Setting.SAL_EXTRA, -1);
-        passedBon = previousIntent.getIntExtra(Setting.BON_EXTRA, -1);
-        passedStock = previousIntent.getIntExtra(Setting.STO_EXTRA, -1);
-        passedFund = previousIntent.getIntExtra(Setting.FUN_EXTRA, -1);
-        passedHoliday = previousIntent.getIntExtra(Setting.HOL_EXTRA, -1);
-        passedStipend = previousIntent.getIntExtra(Setting.STIP_EXTRA, -1);
-    }
-
     public void returnToMain(View view) {
         if (R.id.cancelEnterBtn == view.getId()) {
             startActivity(new Intent(EnterOfferActivity.this, MainActivity.class));
         }
 
-    }
-
-    private static double calculateJobScore(double salary, double bonus, int stock, double fund, int holiday, double stipend) {
-
-        int commonD = passedSal + passedBon + passedStock + passedFund + passedHoliday + passedStipend;
-
-        double AYS = salary * ((double) passedSal / commonD);
-        double AYB = bonus * ((double) passedBon / commonD);
-        double STO = ((double) stock /3) * ((double) passedStock / commonD);
-        double FUN = fund * ((double) passedFund / commonD);
-        double HOL = (holiday * (salary / 260)) * ((double) passedHoliday / commonD);
-        double STIP = (stipend * 12) * ((double) passedStipend / commonD);
-
-        return AYS + AYB + STO + FUN + HOL + STIP;
     }
 
     public void saveJob(View view) {
@@ -146,15 +113,15 @@ public class EnterOfferActivity extends AppCompatActivity {
             int holiday = Integer.parseInt(holidayEditText.getText().toString());
             float stipend = Float.parseFloat(stipendEditText.getText().toString());
             boolean isCurrent = false;
-            double jobScore = calculateJobScore(salary, bonus, stock, fund , holiday, stipend);
 
             int id = Job.jobArrayList.size();
 
             Job newJob = new Job(id, title, company, location, cost, salary, bonus, stock, fund, holiday, stipend, isCurrent);
-            newJob.setScore(jobScore);
             Job.jobArrayList.add(newJob);
             sqLiteManager.addJobToDatabase(newJob);
+            Intent i = new Intent(EnterOfferActivity.this, MainActivity.class);
             finish();
+            startActivity(i);
         }
     }
 

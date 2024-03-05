@@ -30,12 +30,6 @@ public class MainActivity extends AppCompatActivity {
         if (R.id.enterEditJobBtn == view.getId()) {
             if (userSetting != null) {
                 Intent intent = new Intent(MainActivity.this, EnterEditJobActivity.class);
-                intent.putExtra(Setting.SAL_EXTRA, userSetting.getSalary());
-                intent.putExtra(Setting.BON_EXTRA, userSetting.getBonus());
-                intent.putExtra(Setting.STO_EXTRA, userSetting.getStock());
-                intent.putExtra(Setting.FUN_EXTRA, userSetting.getFund());
-                intent.putExtra(Setting.HOL_EXTRA, userSetting.getHoliday());
-                intent.putExtra(Setting.STIP_EXTRA, userSetting.getStipend());
                 startActivity(intent);
             }
         }
@@ -43,12 +37,6 @@ public class MainActivity extends AppCompatActivity {
         if (R.id.enterOfferBtn == view.getId()) {
             if (userSetting != null) {
                 Intent intent = new Intent(MainActivity.this, EnterOfferActivity.class);
-                intent.putExtra(Setting.SAL_EXTRA, userSetting.getSalary());
-                intent.putExtra(Setting.BON_EXTRA, userSetting.getBonus());
-                intent.putExtra(Setting.STO_EXTRA, userSetting.getStock());
-                intent.putExtra(Setting.FUN_EXTRA, userSetting.getFund());
-                intent.putExtra(Setting.HOL_EXTRA, userSetting.getHoliday());
-                intent.putExtra(Setting.STIP_EXTRA, userSetting.getStipend());
                 startActivity(intent);
             }
         }

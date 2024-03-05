@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:padding="15dp"
-    android:layout_height="100dp">
+    android:layout_height="125dp">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -24,6 +24,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Company"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/cellScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score"
             android:textStyle="bold"
             android:maxLines="1"
             android:layout_marginTop="5dp"
