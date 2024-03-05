@@ -8,10 +8,16 @@
       <entry key="ExampleUnitTest">
         <State />
       </entry>
-      <entry key="fundCurrentJobError2()">
+      <entry key="jobCompareTest">
         <State />
       </entry>
-      <entry key="fundJobOfferError3()">
+      <entry key="selectJobError1()">
+        <State />
+      </entry>
+      <entry key="selectJobError2()">
+        <State />
+      </entry>
+      <entry key="selectJobIsCorrect()">
         <State />
       </entry>
     </value>
