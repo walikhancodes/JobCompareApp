@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -72,7 +72,8 @@ public class JobsActivity extends AppCompatActivity {
                 Job.setSelectedJobs(selectedJobs);
                 startActivity(new Intent(JobsActivity.this, ViewJobsActivity.class));
             } else {
-                Toast.makeText(getApplicationContext(),"Select 2 Jobs",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Select 2 Jobs",Toast.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(android.R.id.content), "Select 2 Jobs", Snackbar.LENGTH_SHORT).show();
             }
         }
     }
