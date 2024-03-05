@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.text.DecimalFormat;
+
 
 public class JobDetailAdapter extends ArrayAdapter<Job> {
 
@@ -37,15 +39,17 @@ public class JobDetailAdapter extends ArrayAdapter<Job> {
         TextView holiday = convertView.findViewById(R.id.cellHoliday);
         TextView stipend = convertView.findViewById(R.id.cellStipend);
 
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+
         title.setText(job.getTitle());
         company.setText(job.getCompany());
         location.setText(job.getLocation());
-        salary.setText(String.valueOf(job.getSalary()));
-        bonus.setText(String.valueOf(job.getBonus()));
+        salary.setText("$" + df.format(job.getSalary()));
+        bonus.setText("$" + df.format(job.getBonus()));
         stock.setText(String.valueOf(job.getStock()));
-        fund.setText(String.valueOf(job.getFund()));
+        fund.setText("$" + df.format(job.getFund()));
         holiday.setText(String.valueOf(job.getHolidays()));
-        stipend.setText(String.valueOf(job.getStipend()));
+        stipend.setText("$" + df.format(job.getStipend()));
 
         return convertView;
     }
