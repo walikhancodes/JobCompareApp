@@ -221,7 +221,7 @@ public class jobCompareTest {
 
         onData(anything())
                 .inAdapterView(withId(R.id.jobsListView))
-                .atPosition(2)
+                .atPosition(1)
                 .onChildView(withId(R.id.checkBox))
                 .perform(click());
 

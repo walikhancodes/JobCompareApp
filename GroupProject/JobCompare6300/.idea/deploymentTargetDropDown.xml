@@ -5,6 +5,9 @@
       <entry key="ExampleUnitTest">
         <State />
       </entry>
+      <entry key="Tests in 'edu.gatech.seclass.jobcompare6300'">
+        <State />
+      </entry>
       <entry key="UpdateListTest">
         <State />
       </entry>
@@ -12,6 +15,9 @@
         <State />
       </entry>
       <entry key="jobCompareTest">
+        <State />
+      </entry>
+      <entry key="selectJobIsCorrect()">
         <State />
       </entry>
     </value>
